@@ -1,0 +1,62 @@
+{
+  "name": "uni-chatbot",
+  "dependencies": { "express": "*" },
+  "scripts": { "start": "node index.js" }
+}
+```
+9. Click **Commit changes**
+
+You now have 2 files on GitHub. ✅
+
+---
+
+## Step 3 — Render account
+
+1. Go to **render.com** → **Get Started for Free**
+2. Click **Continue with GitHub** — log in with the GitHub account you just made
+3. Done. Render and GitHub are now connected.
+
+---
+
+## Step 4 — Deploy on Render
+
+1. Click **New +** → **Web Service**
+2. Click **Connect** next to your `uni-chatbot` repository
+3. Fill in:
+   - **Name**: `uni-chatbot`
+   - **Runtime**: `Node`
+   - **Start Command**: `node index.js`
+   - **Plan**: Free (or $7 Starter for no sleep)
+4. Click **Create Web Service**
+5. Wait ~2 minutes while it builds
+6. You get a URL like `https://uni-chatbot.onrender.com` ✅
+
+---
+
+## Step 5 — Add your secret keys
+
+Still in Render, click **Environment** in the left menu → **Add Environment Variable**:
+
+| Key | Value |
+|---|---|
+| `ANTHROPIC_API_KEY` | your key from console.anthropic.com |
+| `TELEGRAM_TOKEN` | your token from @BotFather |
+
+Click **Save Changes** → Render restarts automatically.
+
+---
+
+## Step 6 — Get your Anthropic key
+
+1. Go to **console.anthropic.com** → sign up
+2. Click **API Keys** → **Create Key**
+3. Copy it → paste into Render as shown above
+4. Add a credit card — you'll pay ~$1–3/month based on usage
+
+---
+
+## Step 7 — Tell Telegram where your bot lives
+
+Open your browser and go to this URL — replace the two parts in `< >`:
+```
+https://api.telegram.org/bot<YOUR_TELEGRAM_TOKEN>/setWebhook?url=https://uni-chatbot.onrender.com/telegram
